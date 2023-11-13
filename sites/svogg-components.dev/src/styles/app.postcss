@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--svogg-primary-hue: 200;
+	--svogg-primary-saturation: 100%;
+	--svogg-primary-lightness: 20%;
+}
+
+::-webkit-scrollbar {
+	width: 0.5rem;
+	height: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--svogg-surface-400);
+	border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--svogg-surface-200);
+}
+
+@media (prefers-color-scheme: light) {
+	a[target='_blank'] {
+		@apply text-blue-700;
+
+		&:hover {
+			@apply text-blue-600;
+		}
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	a[target='_blank'] {
+		@apply text-blue-400;
+
+		&:hover {
+			@apply text-blue-300;
+		}
+	}
+}
+
+body {
+	@apply flex flex-col min-h-screen max-h-screen overflow-hidden;
+}
+
+h1 {
+	@apply text-4xl mb-4 leading-none;
+}
+
+h2 {
+	@apply text-2xl mb-4 leading-none;
+}
+
+h3 {
+	@apply text-xl mb-4 leading-none;
+}
+
+a[target='_blank'] {
+	@apply underline;
+}
+
+.text-light {
+	color: var(--svogg-text-light);
+}
+
+.surface-200 {
+	background-color: var(--svogg-surface-200);
+}
+
+.surface-300 {
+	background-color: var(--svogg-surface-300);
+}
