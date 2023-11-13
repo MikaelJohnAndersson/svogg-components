@@ -1,0 +1,122 @@
+/* Variables */
+/* Cred goes to https://web.dev/articles/building/a-color-scheme */
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--svogg-surface-100: hsl(var(--svogg-primary-hue) 10% 10%);
+		--svogg-surface-200: hsl(var(--svogg-primary-hue) 10% 15%);
+		--svogg-surface-300: hsl(var(--svogg-primary-hue) 5% 20%);
+		--svogg-surface-400: hsl(var(--svogg-primary-hue) 5% 25%);
+
+		--svogg-text: hsl(var(--svogg-primary-hue) 15% 85%);
+		--svogg-text-light: hsl(var(--svogg-primary-hue) 5% 65%);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--svogg-surface-100: hsl(var(--svogg-primary-hue) 20% 98%);
+		--svogg-surface-200: hsl(var(--svogg-primary-hue) 20% 95%);
+		--svogg-surface-300: hsl(var(--svogg-primary-hue) 20% 90%);
+		--svogg-surface-400: hsl(var(--svogg-primary-hue) 20% 80%);
+
+		--svogg-text: hsl(var(--svogg-primary-hue) var(--svogg-primary-saturation) 3%);
+		--svogg-text-light: hsl(var(--svogg-primary-hue) 30% 30%);
+	}
+}
+
+:root {
+	--svogg-primary-hue: 200;
+	--svogg-primary-saturation: 100%;
+	--svogg-primary-lightness: 20%;
+
+	color: var(--svogg-text);
+}
+
+/* Base styles */
+
+body {
+	background-color: var(--svogg-surface-100);
+}
+
+/* Components */
+
+.svogg-chip {
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	gap: 0.25rem;
+	border-radius: 0.25rem;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+	font-size: 0.75rem;
+	line-height: 1;
+	background-color: var(--svogg-surface-400);
+}
+
+.svogg-input::placeholder {
+	color: var(--svogg-text-light);
+}
+
+.svogg-drawer {
+	color: var(--svogg-text);
+	background-color: var(--svogg-surface-200);
+}
+
+.svogg-drawer-overlay {
+	background-color: hsla(0, 0%, 0%, 0.7);
+}
+
+.svogg-tab {
+	line-height: 1;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+}
+
+.svogg-tab:hover {
+	cursor: pointer;
+}
+
+.svogg-tab:hover:not(.selected) {
+	background-color: var(--svogg-surface-400);
+}
+
+.svogg-tab.selected {
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-color: var(--svogg-surface-400);
+}
+
+.svogg-tablist {
+	border-bottom-width: 1px;
+	border-color: var(--svogg-surface-400);
+}
+
+/* Extra classes */
+
+.svogg-input {
+	padding: 0.5rem;
+	min-width: 0px;
+	background-color: var(--svogg-surface-300);
+	color: var(--svogg-text);
+	border-radius: 0.25rem;
+}
+
+.svogg-btn {
+	border-radius: 0.25rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: var(--svogg-surface-300);
+}
+
+.svogg-btn:hover {
+	background-color: var(--svogg-surface-400);
+}

@@ -1,0 +1,19 @@
+{
+  "name": "svogg",
+  "version": "1.0.0",
+  "description": "Monorepo for svogg-components",
+  "scripts": {
+    "dev": "pnpm -w run svogg-components run package:watch & pnpm -w run svogg-components.dev run dev",
+    "svogg-components": "pnpm --filter svogg-components",
+    "svogg-components.dev": "pnpm --filter svogg-components.dev"
+  },
+  "keywords": [],
+  "author": "MikaelJohnAndersson <mikael.andersson@moggstudio.se>",
+  "license": "MIT",
+  "homepage": "https://svogg-components.vercel.app",
+  "packageManager": "pnpm@8.9.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MikaelJohnAndersson/svogg-components.git"
+  }
+}
