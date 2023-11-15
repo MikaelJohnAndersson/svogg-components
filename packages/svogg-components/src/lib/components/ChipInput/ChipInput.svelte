@@ -29,7 +29,7 @@
 	const dispatch = createEventDispatcher();
 
 	const rootStyles =
-		'display:flex; flex-direction:column; gap: 0.5rem; height: auto; min-width: 0px;';
+		'display:inline-flex; flex-direction:column; gap: 0.5rem; height: auto; min-width: 0px;';
 
 	const chipListStyles = 'display: flex; gap: 0.25rem; flex-wrap: wrap;';
 
