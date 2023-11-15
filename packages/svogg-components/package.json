@@ -1,6 +1,6 @@
 {
 	"name": "svogg-components",
-	"version": "0.5.1",
+	"version": "0.5.2",
 	"description": "A SvelteKit component library.",
 	"author": "MikaelJohnAndersson <mikael.andersson@moggstudio.se>",
 	"license": "MIT",
@@ -20,17 +20,17 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
+			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		},
 		"./styles/*.css": "./dist/styles/*.css",
 		"./components/*": "./dist/components/*"
 	},
 	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"dist"
 	],
 	"peerDependencies": {
 		"svelte": "^4.0.0"

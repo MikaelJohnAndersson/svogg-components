@@ -102,10 +102,10 @@ body {
 
 .svogg-input {
 	padding: 0.5rem;
-	min-width: 0px;
 	background-color: var(--svogg-surface-300);
 	color: var(--svogg-text);
 	border-radius: 0.25rem;
+	border: 0;
 }
 
 .svogg-btn {
