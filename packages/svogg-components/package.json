@@ -1,6 +1,6 @@
 {
 	"name": "svogg-components",
-	"version": "0.5.1",
+	"version": "0.5.2",
 	"description": "A SvelteKit component library.",
 	"author": "MikaelJohnAndersson <mikael.andersson@moggstudio.se>",
 	"license": "MIT",
