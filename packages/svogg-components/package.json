@@ -20,17 +20,18 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
-			"svelte": "./dist/index.js"
+			"svelte": "./dist/index.js",
+			"types": "./dist/index.d.ts"
 		},
 		"./styles/*.css": "./dist/styles/*.css",
 		"./components/*": "./dist/components/*"
 	},
 	"files": [
-		"dist",
-		"!dist/**/*.test.*",
-		"!dist/**/*.spec.*"
+		"dist"
 	],
 	"peerDependencies": {
 		"svelte": "^4.0.0"
