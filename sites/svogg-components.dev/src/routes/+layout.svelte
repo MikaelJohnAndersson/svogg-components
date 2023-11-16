@@ -38,8 +38,17 @@
 		</div>
 	</div>
 	<div class="flex items-center justify-center gap-4">
-		<a href="https://github.com/MikaelJohnAndersson/svogg-components" target="_blank">
-			<Icon class="text-white" icon="tabler:brand-github" />
+		<a href="https://www.npmjs.com/package/svogg-components" target="_blank" title="NPM">
+			<Icon class="text-white w-6 h-6" icon="tabler:brand-npm" aria-hidden="true" />
+			<span class="sr-only">NPM</span>
+		</a>
+		<a
+			href="https://github.com/MikaelJohnAndersson/svogg-components"
+			target="_blank"
+			title="Github"
+		>
+			<Icon class="text-white w-6 h-6" icon="tabler:brand-github" aria-hidden="true" />
+			<span class="sr-only">Github</span>
 		</a>
 	</div>
 </header>
