@@ -248,10 +248,20 @@
 	}
 </script>
 
-<div style={rootStyles}>
+<div style={rootStyles} data-testid="chip-input">
 	<input style="display:none;" value={chips} {...$$restProps} />
-	<form style="display:contents;" on:submit|preventDefault={handleSubmit}>
-		<input type="text" class="svogg-input" bind:value {placeholder} />
+	<form
+		style="display:contents;"
+		on:submit|preventDefault={handleSubmit}
+		data-testid="chip-input_form"
+	>
+		<input
+			type="text"
+			class="svogg-input"
+			bind:value
+			{placeholder}
+			data-testid="chip-input_input"
+		/>
 	</form>
 	<div role="grid" style={chipListStyles} use:handleArrowKeys bind:this={grid}>
 		{#each chips as chip, i}
