@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { TabList, Tab, TabPanel } from 'svogg-components';
-	import tabListSrc from 'svogg-components/components/TabList/TabList.svelte?raw&sveld';
-	import tabSrc from 'svogg-components/components/TabList/Tab.svelte?raw&sveld';
-	import tabPanelSrc from 'svogg-components/components/TabList/TabPanel.svelte?raw&sveld';
+	import tabListSrc from 'svogg-components/components/Tabs/TabList.svelte?raw&sveld';
+	import tabSrc from 'svogg-components/components/Tabs/Tab.svelte?raw&sveld';
+	import tabPanelSrc from 'svogg-components/components/Tabs/TabPanel.svelte?raw&sveld';
 	import { CodeBlock, DocsShell, DocsType } from '$lib/components';
 	import type { DocsShellSettings } from '$lib/components';
 
