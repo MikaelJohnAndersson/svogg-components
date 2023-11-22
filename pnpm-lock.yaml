@@ -55,6 +55,9 @@ importers:
       svelte-check:
         specifier: ^3.4.3
         version: 3.6.0(postcss@8.4.31)(svelte@4.2.3)
+      svelte-htm:
+        specifier: ^1.2.0
+        version: 1.2.0(svelte@4.2.3)
       tslib:
         specifier: ^2.4.1
         version: 2.6.2
@@ -184,6 +187,14 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
+    dev: true
+
+  /@babel/runtime-corejs3@7.23.2:
+    resolution: {integrity: sha512-54cIh74Z1rp4oIjsHjqN+WM4fMyCBYe+LpZ9jWm51CZ1fbH3SkAzQD/3XLoNkjbJ7YEmjobLXyvQrFypRHOrXw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.33.3
+      regenerator-runtime: 0.14.0
     dev: true
 
   /@babel/runtime@7.23.2:
@@ -1290,6 +1301,16 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /core-js-pure@3.33.3:
+    resolution: {integrity: sha512-taJ00IDOP+XYQEA2dAe4ESkmHt1fL8wzYDo3mRWQey8uO9UojlBFMneA65kMyxfYP7106c6LzWaq7/haDT6BCQ==}
+    requiresBuild: true
+    dev: true
+
+  /core-js@3.33.3:
+    resolution: {integrity: sha512-lo0kOocUlLKmm6kv/FswQL8zbkH7mVsLJ/FULClOhv8WRVmKLVcs6XPNQAzstfeJTCHMyButEwG+z1kHxHoDZw==}
+    requiresBuild: true
+    dev: true
+
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1959,6 +1980,10 @@ packages:
   /highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
+    dev: true
+
+  /htm@3.1.1:
+    resolution: {integrity: sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==}
     dev: true
 
   /html-encoding-sniffer@3.0.0:
@@ -3295,6 +3320,15 @@ packages:
       svelte: 4.2.3
     dev: true
 
+  /svelte-fragment-component@1.2.0(svelte@4.2.3):
+    resolution: {integrity: sha512-rRstmz2oAy2Y/7X57tRaIAJdMYsa2K/MOx/YJN/ETb7Bj9U3vjgioz27dMG1hl2vAKFTtQpxDhC31ur7ECwpog==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      svelte: 4.2.3
+    dev: true
+
   /svelte-highlight@7.4.1:
     resolution: {integrity: sha512-ZjPUQn16bESqmzXzrQXfWKidwUabHNxysGIOUdbsxqBtDe8s33V9z6K697sszQITQ9k6hrMUpTICWLm2GIW5xQ==}
     dependencies:
@@ -3307,6 +3341,31 @@ packages:
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
     dependencies:
+      svelte: 4.2.3
+    dev: true
+
+  /svelte-htm@1.2.0(svelte@4.2.3):
+    resolution: {integrity: sha512-6YFNncbyXbCa3PSoMQc/JR6O/Yg1OgNioH5rMgE88RVPzU8714y2Urfenlqs+ryRS+Inv+m6TJ9jH3W7wDCS1A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      '@babel/runtime-corejs3': 7.23.2
+      core-js: 3.33.3
+      htm: 3.1.1
+      svelte: 4.2.3
+      svelte-fragment-component: 1.2.0(svelte@4.2.3)
+      svelte-hyperscript: 1.2.1(svelte@4.2.3)
+    dev: true
+
+  /svelte-hyperscript@1.2.1(svelte@4.2.3):
+    resolution: {integrity: sha512-IVk91VDSOrhOUe0KI+Jfu7yCruUTOXgr4WysrK7hBNbFMDjeBOcPhk+LMYjUjdWxJx3+QSt3bUXj09YrUfRkjg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      svelte: 3.x
+    dependencies:
+      '@babel/runtime-corejs3': 7.23.2
+      core-js: 3.33.3
       svelte: 4.2.3
     dev: true
 
