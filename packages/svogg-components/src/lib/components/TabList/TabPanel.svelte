@@ -18,6 +18,14 @@
 	$: style = !active ? 'display: none;' : '';
 </script>
 
-<div {id} role="tabpanel" aria-labelledby={labelledby} class={$$props.class} tabindex="0" {style}>
+<div
+	{id}
+	data-testid="tab-panel"
+	role="tabpanel"
+	aria-labelledby={labelledby}
+	class={$$props.class}
+	tabindex="0"
+	{style}
+>
 	<slot />
 </div>
