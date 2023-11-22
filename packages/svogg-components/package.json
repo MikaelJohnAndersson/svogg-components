@@ -28,7 +28,7 @@
 			"svelte": "./dist/index.js"
 		},
 		"./styles/*.css": "./dist/styles/*.css",
-		"./components/*": "./dist/components/*"
+		"./components/*.svelte": "./dist/components/*.svelte"
 	},
 	"files": [
 		"dist"
