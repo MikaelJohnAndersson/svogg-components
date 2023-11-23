@@ -65,7 +65,7 @@
 	<aside class="max-md:hidden">
 		<Navigation />
 	</aside>
-	<main class="scrollable p-4 flex-1 flex gap-4">
+	<main class="scrollable p-4 flex-1 flex gap-4 w-full">
 		<slot />
 	</main>
 </div>
@@ -76,6 +76,6 @@
 	}
 
 	:global(article) {
-		@apply max-w-4xl;
+		@apply max-w-4xl w-full;
 	}
 </style>
