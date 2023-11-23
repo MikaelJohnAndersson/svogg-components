@@ -23,11 +23,11 @@
 
 <style lang="postcss">
 	.root {
-		@apply overflow-x-auto w-full;
+		@apply overflow-x-auto w-full mb-6;
 	}
 
 	table {
-		@apply table-auto w-full overflow-hidden mb-6;
+		@apply table-auto w-full overflow-hidden mb-2;
 
 		caption {
 			@apply text-left my-2 font-bold;
