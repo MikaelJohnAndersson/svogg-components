@@ -46,6 +46,15 @@ body {
 	@apply flex flex-col min-h-screen max-h-screen overflow-hidden;
 }
 
+@supports (-webkit-touch-callout: none) {
+	body {
+		/* Fixes content hidden behind Safari menu bar */
+		/* https://github.com/postcss/postcss-100vh-fix */
+		min-height: -webkit-fill-available;
+		max-height: -webkit-fill-available;
+	}
+}
+
 h1 {
 	@apply text-4xl mb-4 leading-none;
 }
@@ -64,6 +73,10 @@ a[target='_blank'] {
 
 .text-light {
 	color: var(--svogg-text-light);
+}
+
+.text-base {
+	color: var(--svogg-text);
 }
 
 .surface-200 {

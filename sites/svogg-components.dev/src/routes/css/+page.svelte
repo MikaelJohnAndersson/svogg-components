@@ -111,7 +111,7 @@
 	</p>
 	<div class="flex gap-2 my-6 justify-center">
 		<div class="color p-4" />
-		<div class="flex flex-col gap-2 items-start">
+		<div class="flex flex-1 flex-col gap-2">
 			<label>
 				<abbr title="Hue">H</abbr>
 				<input class="hue" type="range" min="0" max={HUE_MAX} bind:value={hue} />
@@ -150,14 +150,13 @@
 			</label>
 		</div>
 	</div>
-	<br />
 	<p>
 		Additionally, <code>svogg-components</code> provides some extra classes which could be used in conjunction
 		with the components for a coherent look:
 	</p>
 	<!-- TODO: Link to css instead? -->
 	<br />
-	TODO
+	To be written
 	<!-- <CodeBlock
 		class="my-4"
 		code={`
@@ -196,8 +195,7 @@
 	}
 
 	abbr {
-		@apply px-2 flex items-center;
-		text-decoration: none;
+		@apply px-2 flex items-center no-underline;
 	}
 
 	label {
@@ -205,27 +203,19 @@
 	}
 
 	input[type='range'] {
+		@apply appearance-none cursor-pointer w-full max-w-xs bg-transparent flex-1;
 		-webkit-appearance: none;
-		appearance: none;
-		cursor: pointer;
-		width: 15rem;
-		background: transparent;
-		flex: 1;
 	}
 
 	input[type='range']::-webkit-slider-thumb {
-		@apply shadow rounded-full shadow-black;
+		@apply shadow rounded-full shadow-black h-full w-6 cursor-pointer;
 		-webkit-appearance: none;
-		height: 100%;
-		width: 1.25rem;
-		background: white;
-		cursor: pointer;
+		background: var(--svogg-text);
 	}
 
 	/***** Chrome, Safari, Opera, and Edge Chromium *****/
 	input[type='range']::-webkit-slider-runnable-track {
-		@apply rounded-l-full;
-		height: 100%;
+		@apply rounded-l-full h-full;
 	}
 
 	input.hue::-webkit-slider-runnable-track {

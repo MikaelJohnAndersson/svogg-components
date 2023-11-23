@@ -4,7 +4,7 @@
 	import '../styles/hljs.css'; // highlight.js styles
 	import { navigating } from '$app/stores';
 	import Icon from '@iconify/svelte';
-	import { Navigation } from '$lib/components';
+	import { Navigation, IconLinks } from '$lib/components';
 	import { Drawer } from 'svogg-components';
 
 	// @ts-expect-error reading from vite.config.js
@@ -37,11 +37,7 @@
 			<span class="font-mono text-xs">{pkg.version}</span>
 		</div>
 	</div>
-	<div class="flex items-center justify-center gap-4">
-		<a href="https://github.com/MikaelJohnAndersson/svogg-components" target="_blank">
-			<Icon class="text-white" icon="tabler:brand-github" />
-		</a>
-	</div>
+	<div class="hidden sm:contents"><IconLinks /></div>
 </header>
 <Drawer bind:open={drawerOpen} position="left" id="navigation" as="aside">
 	<button
@@ -50,13 +46,16 @@
 	>
 		<Icon icon="tabler:x" class="w-6 h-6" />
 	</button>
-	<Navigation />
+	<div class="flex flex-col justify-between h-full">
+		<Navigation />
+		<div class="flex justify-start py-4 mx-4 sm:hidden"><IconLinks /></div>
+	</div>
 </Drawer>
 <div class="flex flex-1 overflow-hidden">
 	<aside class="max-md:hidden">
 		<Navigation />
 	</aside>
-	<main class="scrollable p-4 flex-1 flex gap-4">
+	<main class="scrollable p-4 flex-1 flex gap-4 w-full">
 		<slot />
 	</main>
 </div>
@@ -67,6 +66,6 @@
 	}
 
 	:global(article) {
-		@apply max-w-4xl;
+		@apply max-w-4xl w-full;
 	}
 </style>
