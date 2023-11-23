@@ -71,178 +71,121 @@
 
 	/** @param {MouseEvent | KeyboardEvent} ev */
 	function handleDeleteChip(ev) {
+		// @ts-ignore
 		if (ev.type == 'keydown' && ev.code !== 'Space' && ev.key !== 'Enter') return;
+
 		const target = /** @type {HTMLSpanElement} */ (ev.target);
 		const chip = target.getAttribute('data-chip');
+
 		if (!chip) return console.error('not a chip');
+
 		chips = chips.filter((c) => c !== chip);
-		// TODO: Focus next/prev focusable cell
 		dispatch('change', { chips });
+	}
+
+	/**
+	 * @param {HTMLElement} from
+	 * @param {HTMLElement} to
+	 */
+	function moveFocusFromTo(from, to) {
+		from.setAttribute('tabindex', '-1');
+		to.setAttribute('tabindex', '0');
+		to.focus();
 	}
 
 	/** @param {KeyboardEvent} ev */
 	function handleChipKeyDown(ev) {
 		if (!['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(ev.key)) return;
 		ev.preventDefault();
+
 		const chip = /** @type {HTMLElement} */ (ev.currentTarget);
 		const originalTarget = /** @type {HTMLElement} */ (ev.target);
 		const children = /** @type {HTMLElement[]} */ ([...chip.querySelectorAll('[tabindex]')]);
 		const index = children.findIndex((n) => n == originalTarget);
 
-		/**
-		 * @param {HTMLElement} from
-		 * @param {HTMLElement} to
-		 */
-		function moveFocusFromTo(from, to) {
-			from.setAttribute('tabindex', '-1');
-			to.setAttribute('tabindex', '0');
-			to.focus();
+		const isOnLastCell = index + 1 == children.length;
+		const isOnFirstCell = index == 0;
+
+		if (ev.key == 'ArrowRight' && !isOnLastCell) {
+			// Just focus next gridcell within chip
+			const next = children[index + 1];
+			moveFocusFromTo(originalTarget, next);
+			return;
 		}
 
-		if (ev.key == 'ArrowRight') {
-			if (index + 1 < children.length) {
-				// Focus next gridcell
-				const next = children[index + 1];
-				moveFocusFromTo(originalTarget, next);
-			} else {
-				chip.dispatchEvent(
-					new CustomEvent('arrow_right', {
-						detail: {
-							originalTarget
-						}
-					})
-				);
-			}
+		if (ev.key == 'ArrowLeft' && !isOnFirstCell) {
+			// Just focus previous gridcell within chip
+			const prev = children[index - 1];
+			moveFocusFromTo(originalTarget, prev);
+			return;
 		}
 
-		if (ev.key == 'ArrowLeft') {
-			if (index - 1 >= 0) {
-				// Focus previous gridcell
-				const prev = children[index - 1];
-				moveFocusFromTo(originalTarget, prev);
-			} else {
-				chip.dispatchEvent(
-					new CustomEvent('arrow_left', {
-						detail: {
-							originalTarget
-						}
-					})
-				);
-			}
-		}
+		const events = {
+			ArrowRight: 'arrow_right',
+			ArrowLeft: 'arrow_left',
+			ArrowUp: 'arrow_up',
+			ArrowDown: 'arrow_down'
+		};
 
-		if (ev.key == 'ArrowUp') {
-			chip.dispatchEvent(
-				new CustomEvent('arrow_up', {
-					detail: {
-						originalTarget
-					}
-				})
-			);
-		}
-
-		if (ev.key == 'ArrowDown') {
-			chip.dispatchEvent(
-				new CustomEvent('arrow_down', {
-					detail: {
-						originalTarget
-					}
-				})
-			);
-		}
+		chip.dispatchEvent(
+			new CustomEvent(events[ev.key], {
+				detail: {
+					originalTarget
+				}
+			})
+		);
 	}
 
 	/** @type {import('svelte/action').Action}  */
 	function handleArrowKeys(node) {
 		/** @param {CustomEvent} ev */
-		function onArrowRight(ev) {
-			const target = /** @type {HTMLSpanElement} */ ev.target;
+		function onArrowKeyDown(ev) {
+			const target = /** @type {HTMLSpanElement} */ (ev.target);
 			const index = +target.getAttribute('data-index');
-
 			const rows = node.querySelectorAll('[role="row"]');
-			const el = rows[index + 1]; // Get next chip in list
+			const { originalTarget } = ev.detail;
 
-			if (el) {
-				const cols = el.querySelectorAll('[tabindex]');
-				const firstCol = cols[0];
-				if (firstCol) {
-					ev.detail.originalTarget.setAttribute('tabindex', '-1');
-					firstCol.setAttribute('tabindex', '0');
-					firstCol.focus();
-				}
+			const nextChip = rows[index + 1];
+			const prevChip = rows[index - 1];
+
+			if (ev.type === 'arrow_right' && nextChip) {
+				const cols = nextChip.querySelectorAll('[tabindex]');
+				const col = /** @type {HTMLElement} */ (cols[0]);
+				moveFocusFromTo(originalTarget, col);
 			}
-		}
 
-		/** @param {CustomEvent} ev */
-		function onArrowLeft(ev) {
-			const target = /** @type {HTMLSpanElement} */ ev.target;
-			const index = +target.getAttribute('data-index');
-
-			const rows = node.querySelectorAll('[role="row"]');
-			const el = rows[index - 1]; // Get prev chip in list
-
-			if (el) {
-				const cols = el.querySelectorAll('[tabindex]');
-				const lastCol = cols[cols.length - 1];
-				if (lastCol) {
-					ev.detail.originalTarget.setAttribute('tabindex', '-1');
-					lastCol.setAttribute('tabindex', '0');
-					lastCol.focus();
-				}
-			}
-		}
-
-		/** @param {CustomEvent} ev */
-		function onArrowUp(ev) {
-			const target = /** @type {HTMLSpanElement} */ ev.target;
-			const index = +target.getAttribute('data-index');
-
-			const rows = node.querySelectorAll('[role="row"]');
-			const el = rows[index + 1]; // Get next chip in list
-
-			if (el) {
+			if (ev.type === 'arrow_up' && nextChip) {
 				const index = +ev.detail.originalTarget.getAttribute('data-colindex');
-				const cols = el.querySelectorAll('[tabindex]');
-				const col = cols[index];
-				if (col) {
-					ev.detail.originalTarget.setAttribute('tabindex', '-1');
-					col.setAttribute('tabindex', '0');
-					col.focus();
-				}
+				const cols = nextChip.querySelectorAll('[tabindex]');
+				const col = /** @type {HTMLElement} */ (cols[index]);
+				moveFocusFromTo(originalTarget, col);
 			}
-		}
 
-		/** @param {CustomEvent} ev */
-		function onArrowDown(ev) {
-			const target = /** @type {HTMLSpanElement} */ ev.target;
-			const index = +target.getAttribute('data-index');
+			if (ev.type === 'arrow_left' && prevChip) {
+				const cols = prevChip.querySelectorAll('[tabindex]');
+				const col = /** @type {HTMLElement} */ (cols[cols.length - 1]);
+				moveFocusFromTo(originalTarget, col);
+			}
 
-			const rows = node.querySelectorAll('[role="row"]');
-			const el = rows[index - 1]; // Get previous chip in list
-
-			if (el) {
+			if (ev.type === 'arrow_down' && prevChip) {
 				const index = +ev.detail.originalTarget.getAttribute('data-colindex');
-				const cols = el.querySelectorAll('[tabindex]');
-				const col = cols[index];
-				if (col) {
-					ev.detail.originalTarget.setAttribute('tabindex', '-1');
-					col.setAttribute('tabindex', '0');
-					col.focus();
-				}
+				const cols = prevChip.querySelectorAll('[tabindex]');
+				const col = /** @type {HTMLElement} */ (cols[index]);
+				moveFocusFromTo(originalTarget, col);
 			}
 		}
 
-		node.addEventListener('arrow_right', onArrowRight, true);
-		node.addEventListener('arrow_left', onArrowLeft, true);
-		node.addEventListener('arrow_up', onArrowUp, true);
-		node.addEventListener('arrow_down', onArrowDown, true);
+		node.addEventListener('arrow_right', onArrowKeyDown, true);
+		node.addEventListener('arrow_left', onArrowKeyDown, true);
+		node.addEventListener('arrow_up', onArrowKeyDown, true);
+		node.addEventListener('arrow_down', onArrowKeyDown, true);
 
 		return {
 			destroy() {
-				node.removeEventListener('arrow_right', onArrowRight, true);
-				node.removeEventListener('arrow_left', onArrowLeft, true);
-				node.removeEventListener('arrow_up', onArrowUp, true);
-				node.removeEventListener('arrow_down', onArrowDown, true);
+				node.removeEventListener('arrow_right', onArrowKeyDown, true);
+				node.removeEventListener('arrow_left', onArrowKeyDown, true);
+				node.removeEventListener('arrow_up', onArrowKeyDown, true);
+				node.removeEventListener('arrow_down', onArrowKeyDown, true);
 			}
 		};
 	}
