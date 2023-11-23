@@ -30,6 +30,10 @@
 	--svogg-primary-saturation: 100%;
 	--svogg-primary-lightness: 20%;
 
+	--svogg-primary: hsl(
+		var(--svogg-primary-hue) var(--svogg-primary-saturation) var(--svogg-primary-lightness)
+	);
+
 	color: var(--svogg-text);
 }
 
