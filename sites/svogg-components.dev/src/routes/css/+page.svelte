@@ -208,9 +208,9 @@
 	}
 
 	input[type='range']::-webkit-slider-thumb {
-		@apply shadow rounded-full shadow-black h-full w-6 cursor-pointer;
+		@apply rounded-full h-full w-6 cursor-pointer;
 		-webkit-appearance: none;
-		background: var(--svogg-text);
+		background: white;
 	}
 
 	/***** Chrome, Safari, Opera, and Edge Chromium *****/
