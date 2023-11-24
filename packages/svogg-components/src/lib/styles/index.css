@@ -113,10 +113,15 @@ body {
 	border-radius: 9999px;
 	width: var(--width);
 	aspect-ratio: 2/1;
+	transition: all 0.2s;
 }
 
 .svogg-switch:hover {
 	cursor: pointer;
+}
+
+.svogg-switch.checked {
+	border-color: var(--svogg-primary);
 }
 
 .svogg-switch .thumb {
@@ -126,7 +131,7 @@ body {
 	border-radius: 9999px;
 	height: 100%;
 	aspect-ratio: 1/1;
-	background: var(--svogg-surface-300);
+	background: var(--svogg-surface-400);
 	transition: all 0.2s;
 	transform: scale(var(--thumb-scale));
 }
