@@ -4,7 +4,7 @@
 	import '../styles/hljs.css'; // highlight.js styles
 	import { navigating } from '$app/stores';
 	import Icon from '@iconify/svelte';
-	import { Navigation, IconLinks } from '$lib/components';
+	import { Navigation, IconLinks, LightSwitch } from '$lib/components';
 	import { Drawer } from 'svogg-components';
 
 	// @ts-expect-error reading from vite.config.js
@@ -37,7 +37,10 @@
 			<span class="font-mono text-xs">{pkg.version}</span>
 		</div>
 	</div>
-	<div class="hidden sm:contents"><IconLinks /></div>
+	<div class="hidden sm:flex items-center justify-center gap-4">
+		<LightSwitch />
+		<IconLinks />
+	</div>
 </header>
 <Drawer bind:open={drawerOpen} position="left" id="navigation" as="aside">
 	<button
@@ -48,7 +51,10 @@
 	</button>
 	<div class="flex flex-col justify-between h-full">
 		<Navigation />
-		<div class="flex justify-start py-4 mx-4 sm:hidden"><IconLinks /></div>
+		<div class="flex justify-between py-4 mx-4 sm:hidden">
+			<IconLinks />
+			<LightSwitch />
+		</div>
 	</div>
 </Drawer>
 <div class="flex flex-1 overflow-hidden">
