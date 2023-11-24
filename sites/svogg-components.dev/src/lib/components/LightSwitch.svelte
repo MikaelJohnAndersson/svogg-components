@@ -5,10 +5,11 @@
 
 	let checked = false;
 	$: onChange(checked);
+	$: label = `Change to ${checked ? 'dark' : 'light'} theme`;
 
 	function onChange(_checked: boolean) {
 		if (!browser) return;
-		const theme = checked ? 'light' : 'dark';
+		const theme = _checked ? 'light' : 'dark';
 		const root = document.querySelector('html') as HTMLElement;
 		root.setAttribute('data-theme', theme);
 	}
@@ -20,7 +21,7 @@
 </script>
 
 <div class="contents container">
-	<Switch bind:checked />
+	<Switch bind:checked {label} />
 </div>
 
 <style lang="postcss">
