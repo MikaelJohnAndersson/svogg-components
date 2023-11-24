@@ -30,6 +30,10 @@
 	--svogg-primary-saturation: 100%;
 	--svogg-primary-lightness: 20%;
 
+	--svogg-primary: hsl(
+		var(--svogg-primary-hue) var(--svogg-primary-saturation) var(--svogg-primary-lightness)
+	);
+
 	color: var(--svogg-text);
 }
 
@@ -96,6 +100,47 @@ body {
 .svogg-tablist {
 	border-bottom-width: 1px;
 	border-color: var(--svogg-surface-400);
+}
+
+.svogg-switch {
+	--width: 48px;
+	--border: 2px;
+	--thumb-scale: 0.8;
+
+	position: relative;
+	display: flex;
+	border: var(--border) solid var(--svogg-surface-400);
+	border-radius: 9999px;
+	width: var(--width);
+	aspect-ratio: 2/1;
+	transition: all 0.2s;
+}
+
+.svogg-switch:hover {
+	cursor: pointer;
+}
+
+.svogg-switch.checked {
+	border-color: var(--svogg-primary);
+}
+
+.svogg-switch .thumb {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 9999px;
+	height: 100%;
+	aspect-ratio: 1/1;
+	background-color: var(--svogg-surface-400);
+	transition: all 0.2s;
+	transform: scale(var(--thumb-scale));
+}
+
+.svogg-switch.checked .thumb {
+	background: var(--svogg-primary);
+	border-color: var(--svogg-primary);
+	transform: scale(var(--thumb-scale)) translateX(calc(var(--width) - var(--border)))
+		translateX(calc(-100% * var(--thumb-scale)));
 }
 
 /* Extra classes */
