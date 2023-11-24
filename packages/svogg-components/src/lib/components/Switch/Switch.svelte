@@ -5,6 +5,12 @@
 	 */
 	export let checked = false;
 
+	/**
+	 * HTML `name` attribute
+	 * @type {string}
+	 */
+	export let name = undefined;
+
 	function toggle() {
 		checked = !checked;
 	}
@@ -25,4 +31,5 @@
 	on:keydown={handleKeyDown}
 >
 	<span class="thumb" />
+	<input style="display: none;" type="checkbox" bind:checked {name} />
 </div>
