@@ -50,7 +50,7 @@
 :root {
 	--svogg-primary-hue: 200;
 	--svogg-primary-saturation: 100%;
-	--svogg-primary-lightness: 20%;
+	--svogg-primary-lightness: 40%;
 
 	--svogg-primary: hsl(
 		var(--svogg-primary-hue) var(--svogg-primary-saturation) var(--svogg-primary-lightness)
