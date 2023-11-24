@@ -6,13 +6,14 @@
 	export let checked = false;
 
 	/**
-	 * HTML `name` attribute
+	 * HTML `name` attribute for internal checkbox element
 	 * @type {string}
 	 */
 	export let name = undefined;
 
 	/**
-	 * HTML `aria-label` attribute for the switch element
+	 * 	HTML `aria-label` attribute for outer switch element
+	 *  @type {string}
 	 */
 	export let label = undefined;
 
