@@ -135,7 +135,10 @@ body {
 	border-radius: 9999px;
 	width: var(--width);
 	aspect-ratio: 2/1;
-	transition: all 0.2s;
+}
+
+.svogg-switch:focus-visible {
+	outline: solid 2px;
 }
 
 .svogg-switch:hover {
@@ -154,7 +157,7 @@ body {
 	height: 100%;
 	aspect-ratio: 1/1;
 	background-color: var(--svogg-surface-400);
-	transition: all 0.2s;
+	transition: transform 0.2s;
 	transform: scale(var(--thumb-scale));
 }
 
