@@ -26,6 +26,10 @@
 					href: '/components/drawer'
 				},
 				{
+					title: 'Switch',
+					href: '/components/switch'
+				},
+				{
 					title: 'Tabs',
 					href: '/components/tabs'
 				}

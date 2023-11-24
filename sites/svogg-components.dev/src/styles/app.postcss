@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-	--svogg-primary-hue: 200;
-	--svogg-primary-saturation: 100%;
-	--svogg-primary-lightness: 20%;
-}
-
 ::-webkit-scrollbar {
 	width: 0.5rem;
 	height: 0.5rem;
@@ -22,7 +16,7 @@
 	background-color: var(--svogg-surface-200);
 }
 
-@media (prefers-color-scheme: light) {
+[data-theme='light'] {
 	a[target='_blank'] {
 		@apply text-blue-700;
 
@@ -32,7 +26,7 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme='dark'] {
 	a[target='_blank'] {
 		@apply text-blue-400;
 

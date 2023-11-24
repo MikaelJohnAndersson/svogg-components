@@ -5,3 +5,4 @@ export { default as Navigation } from './Navigation.svelte';
 export { default as DemoWidget } from './DemoWidget.svelte';
 export { default as Table } from './Table.svelte';
 export { default as IconLinks } from './IconLinks.svelte';
+export { default as LightSwitch } from './LightSwitch.svelte';
