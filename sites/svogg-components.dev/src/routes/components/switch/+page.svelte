@@ -14,7 +14,7 @@
 			['.thumb', 'Applied to inner element'],
 			['.checked', 'Applied to outer element when checked']
 		],
-		keyboard: [[`<kbd>Enter or Space</kbd>`, ['Toggles checked state']]]
+		keyboard: [[`<kbd>Enter</kbd> or <kbd>Space</kbd>`, ['Toggles checked state']]]
 	};
 
 	let checked = false;
@@ -22,7 +22,27 @@
 
 <DocsShell {settings}>
 	<svelte:fragment slot="description">
-		<p>Toggle switch.</p>
+		<p>
+			Component for toggling a binary state. Uses an internal checkbox element which could be used
+			in conjunction with forms.
+		</p>
+		<br />
+		<p>
+			Not that when overriding styles, CSS variables <code>--width</code> and <code>--border</code> needs
+			to be set with fixed pixel values on the root element in order for the toggle animation to not
+			break. Like so:
+		</p>
+		<br />
+		<CodeBlock
+			code={`
+			.svogg-switch {
+				/* Overrides variables */
+				--width: 48px;
+				--border: 2px;
+			}
+		`}
+			language="css"
+		/>
 	</svelte:fragment>
 	<svelte:fragment slot="demo">
 		<Switch bind:checked />
